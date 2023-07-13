@@ -10,15 +10,17 @@ class Api::V1::UsersController < ApplicationController
 
   def show
     user = User.where(username: params[:username]).first
-    if User
-      render json: { status: 'SUCCESS', message: 'Loaded user', data: user }, status: :ok
+    if user.nil?
+      render json: { status: 'ERROR', message: 'User not found' }, status: :unprocessable_entity
     else
-      render json: { status: 'ERROR', message: 'User not found', data: user.errors }, status: :unprocessable_entity
+      render json: { status: 'SUCCESS', message: 'Loaded user', data: user }, status: :ok
     end
   end
 
   def destroy
     user = User.where(username: params[:username]).first
+    return render json: { status: 'ERROR', message: 'User not found' }, status: :unprocessable_entity if user.nil?
+
     if user.destroy
       render json: { status: 'SUCCESS', message: 'Deleted user', data: user }, status: :ok
     else
