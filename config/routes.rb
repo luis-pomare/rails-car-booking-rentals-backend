@@ -5,5 +5,6 @@ Rails.application.routes.draw do
 
   get '/Api/v1/cars', to: 'api/v1/cars#index'
   post '/Api/v1/cars', to: 'api/v1/cars#create'
+  get '/Api/v1/car/:id', to: 'api/v1/cars#show'
 
 end

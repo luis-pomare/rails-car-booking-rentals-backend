@@ -17,6 +17,15 @@ class Api::V1::CarsController < ApplicationController
     end
   end
 
+  def show
+    car = Car.where(id: params[:id])
+    if car.nil?
+      render json: { status: 'ERROR', message: 'Car does not exist' }, status: :unprocessable_entity
+    else
+      render json: { status: 'SUCCESS', message: 'Loaded car', data: car }, status: :ok
+    end
+  end
+
   private
 
   def car_params
