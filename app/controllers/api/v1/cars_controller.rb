@@ -26,6 +26,17 @@ class Api::V1::CarsController < ApplicationController
     end
   end
 
+  def destroy
+    car = Car.find(params[:id])
+    return render json: { status: 'ERROR', message: 'Car does not exist' }, status: :unprocessable_entity if car.nil?
+
+    if car.destroy
+      render json: { status: 'SUCCESS', message: 'Deleted car', data: car }, status: :ok
+    else
+      render json: { status: 'ERROR', message: 'Car not deleted', data: car.errors }, status: :unprocessable_entity
+    end
+  end
+
   private
 
   def car_params
