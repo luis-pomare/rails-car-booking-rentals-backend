@@ -15,7 +15,23 @@ class Api::V1::ReservationsController < ApplicationController
     if reservation.save
       render json: { status: 'SUCCESS', message: 'Reservation saved', data: reservation }, status: :ok
     else
-      render json: { status: 'ERROR', message: 'Reservation not saved', data: reservation.errors }, status: :unprocessable_entity
+      render json: { status: 'ERROR', message: 'Reservation not saved', data: reservation.errors },
+             status: :unprocessable_entity
+    end
+  end
+
+  def destroy
+    reservation = Reservation.find(params[:id])
+    if reservation.nil?
+      return render json: { status: 'ERROR', message: 'Reservation does not exist' },
+                    status: :unprocessable_entity
+    end
+
+    if reservation.destroy
+      render json: { status: 'SUCCESS', message: 'Deleted reservation', data: reservation }, status: :ok
+    else
+      render json: { status: 'ERROR', message: 'Reservation not deleted', data: reservation.errors },
+             status: :unprocessable_entity
     end
   end
 
