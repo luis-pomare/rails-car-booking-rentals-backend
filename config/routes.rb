@@ -9,5 +9,6 @@ Rails.application.routes.draw do
   delete '/Api/v1/cars/:id', to:  'api/v1/cars#destroy'
 
   get 'Api/v1/users/:user_id/reservations', to: 'api/v1/reservations#index'
+  post 'Api/v1/users/:user_id/reservations',to: 'api/v1/reservations#create'
 
 end
