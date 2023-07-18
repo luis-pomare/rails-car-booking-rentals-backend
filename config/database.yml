@@ -20,8 +20,6 @@ default: &default
   # For details on connection pooling, see Rails configuration guide
   # https://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: postgres
-  password: <%= ENV['POSTGRES_PASSWORD'] %>
 
 development:
   <<: *default
@@ -86,3 +84,4 @@ production:
   database: rails_car_booking_rentals_backend_production
   username: rails_car_booking_rentals_backend
   password: <%= ENV["RAILS_CAR_BOOKING_RENTALS_BACKEND_DATABASE_PASSWORD"] %>
+
