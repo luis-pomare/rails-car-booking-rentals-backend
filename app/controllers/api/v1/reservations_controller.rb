@@ -1,6 +1,6 @@
 class Api::V1::ReservationsController < ApplicationController
   def index
-    reservations = Reservation.where(user: User.find(params[:user_id]))
+    reservations = Reservation.includes(:car).where(user: User.find(params[:user_id]))
     if reservations.nil?
       render json: { status: 'ERROR', message: 'This user dont have reservations' }, status: :unprocessable_entity
     else
