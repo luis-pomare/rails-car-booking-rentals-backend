@@ -1,0 +1,61 @@
+---
+openapi: 3.0.1
+info:
+  title: API V1
+  version: v1
+paths:
+  "/Api/v1/cars":
+    get:
+      summary: Retrieves all cars
+      tags:
+      - Cars
+      responses:
+        '200':
+          description: OK
+  "/Api/v1/car/{id}":
+    parameters:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: integer
+    get:
+      summary: Shows a specific car
+      tags:
+      - Cars
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: OK
+  "/Api/v1/cars/{id}":
+    parameters:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: integer
+    delete:
+      summary: Deletes a car
+      tags:
+      - Cars
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '422':
+          description: Unprocessable Entity
+servers:
+- url: https://{defaultHost}
+  variables:
+    defaultHost:
+      default: www.example.com
