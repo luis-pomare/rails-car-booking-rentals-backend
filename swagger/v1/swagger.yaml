@@ -12,15 +12,174 @@ paths:
       responses:
         '200':
           description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  message:
+                    type: string
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        name:
+                          type: string
+                        description:
+                          type:
+                          - string
+                          - 'null'
+                        cost_per_day:
+                          type: number
+                        image:
+                          type:
+                          - string
+                          - 'null'
+                        created_at:
+                          type: string
+                          format: date_time
+                        updated_at:
+                          type: string
+                          format: date_time
+                      required:
+                      - id
+                      - name
+                      - cost_per_day
+                      - created_at
+                      - updated_at
+                required:
+                - status
+                - message
+                - data
+        '422':
+          description: Unprocessable Entity
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  message:
+                    type: string
+                  data:
+                    type: 'null'
+                required:
+                - status
+                - message
+    post:
+      summary: Creates a new car
+      tags:
+      - Cars
+      parameters: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  message:
+                    type: string
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      name:
+                        type: string
+                      description:
+                        type:
+                        - string
+                        - 'null'
+                      cost_per_day:
+                        type: number
+                      image:
+                        type:
+                        - string
+                        - 'null'
+                      created_at:
+                        type: string
+                        format: date_time
+                      updated_at:
+                        type: string
+                        format: date_time
+                    required:
+                    - id
+                    - name
+                    - cost_per_day
+                    - created_at
+                    - updated_at
+                required:
+                - status
+                - message
+                - data
+        '422':
+          description: Unprocessable Entity
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  message:
+                    type: string
+                  data:
+                    type: object
+                    properties:
+                      name:
+                        type: array
+                        items:
+                          type: string
+                      cost_per_day:
+                        type: array
+                        items:
+                          type: string
+                      description:
+                        type: array
+                        items:
+                          type: string
+                      image:
+                        type: array
+                        items:
+                          type: string
+                required:
+                - status
+                - message
+                - data
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                description:
+                  type:
+                  - string
+                  - 'null'
+                cost_per_day:
+                  type: number
+                image:
+                  type:
+                  - string
+                  - 'null'
+              required:
+              - name
+              - cost_per_day
   "/Api/v1/car/{id}":
-    parameters:
-    - name: id
-      in: path
-      required: true
-      schema:
-        type: integer
     get:
-      summary: Shows a specific car
+      summary: Retrieves a car by ID
       tags:
       - Cars
       parameters:
@@ -32,28 +191,62 @@ paths:
       responses:
         '200':
           description: OK
-  "/Api/v1/cars/{id}":
-    parameters:
-    - name: id
-      in: path
-      required: true
-      schema:
-        type: integer
-    delete:
-      summary: Deletes a car
-      tags:
-      - Cars
-      parameters:
-      - name: id
-        in: path
-        required: true
-        schema:
-          type: string
-      responses:
-        '200':
-          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  message:
+                    type: string
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      name:
+                        type: string
+                      description:
+                        type:
+                        - string
+                        - 'null'
+                      cost_per_day:
+                        type: number
+                      image:
+                        type:
+                        - string
+                        - 'null'
+                      created_at:
+                        type: string
+                        format: date_time
+                      updated_at:
+                        type: string
+                        format: date_time
+                    required:
+                    - id
+                    - name
+                    - cost_per_day
+                    - created_at
+                    - updated_at
+                required:
+                - status
+                - message
+                - data
         '422':
           description: Unprocessable Entity
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  message:
+                    type: string
+                required:
+                - status
+                - message
 servers:
 - url: https://{defaultHost}
   variables:
