@@ -320,6 +320,38 @@ paths:
                 - status
                 - message
   "/Api/v1/users/{user_id}/reservations":
+    post:
+      summary: Creates a new reservation
+      tags:
+      - Reservations
+      parameters:
+      - name: user_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - name: car_id
+        in: query
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: OK
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                starting_date:
+                  type: string
+                  format: date-time
+                end_date:
+                  type: string
+                  format: date-time
+              required:
+              - starting_date
+              - end_date
     get:
       summary: Retrieves all reservations for a user
       tags:
