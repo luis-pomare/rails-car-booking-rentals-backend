@@ -12,6 +12,10 @@ RSpec.describe 'Api::V1::ReservationsController', type: :request do
       parameter name: :reservation, in: :body, schema: {
         type: :object,
         properties: {
+          city: { type: :string },
+          cost: { type: :number },
+          car_id: { type: :integer },
+          user_id: { type: :integer },
           starting_date: { type: :string, format: 'date-time' },
           end_date: { type: :string, format: 'date-time' }
         },
