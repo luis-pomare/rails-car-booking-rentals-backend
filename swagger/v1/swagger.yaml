@@ -343,6 +343,14 @@ paths:
             schema:
               type: object
               properties:
+                city:
+                  type: string
+                cost:
+                  type: number
+                car_id:
+                  type: integer
+                user_id:
+                  type: integer
                 starting_date:
                   type: string
                   format: date-time
@@ -425,6 +433,122 @@ paths:
                 required:
                 - status
                 - message
+  "/Api/v1/users/{username}":
+    parameters:
+    - name: username
+      in: path
+      description: username
+      required: true
+      schema:
+        type: string
+    get:
+      summary: show user
+      tags:
+      - Users
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  message:
+                    type: string
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      username:
+                        type: string
+                      full_name:
+                        type:
+                        - string
+                        - 'null'
+                      created_at:
+                        type: string
+                        format: date_time
+                      updated_at:
+                        type: string
+                        format: date_time
+                    required:
+                    - id
+                    - username
+                    - full_name
+                    - created_at
+                    - updated_at
+                required:
+                - status
+                - message
+                - data
+    delete:
+      summary: delete user
+      tags:
+      - Users
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  message:
+                    type: string
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      username:
+                        type: string
+                      full_name:
+                        type:
+                        - string
+                        - 'null'
+                      created_at:
+                        type: string
+                        format: date_time
+                      updated_at:
+                        type: string
+                        format: date_time
+                    required:
+                    - id
+                    - username
+                    - full_name
+                    - created_at
+                    - updated_at
+                required:
+                - status
+                - message
+                - data
+  "/Api/v1/users":
+    post:
+      summary: create user
+      tags:
+      - Users
+      parameters: []
+      responses:
+        '200':
+          description: successful
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                full_name:
+                  type: string
+              required:
+              - username
+              - full_name
 servers:
 - url: https://{defaultHost}
   variables:
