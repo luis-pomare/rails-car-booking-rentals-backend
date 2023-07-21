@@ -2,8 +2,8 @@ class Api::V1::ReservationsController < ApplicationController
   def index
     reservations = Reservation.includes(:car).where(user: User.find(params[:user_id]))
     render json: { status: 'SUCCESS', message: 'Loaded all reservations', data: reservations }, status: :ok
-    rescue ActiveRecord::RecordNotFound
-      render json: { status: 'ERROR', message: 'This user dont have reservations' }, status: :unprocessable_entity
+  rescue ActiveRecord::RecordNotFound
+    render json: { status: 'ERROR', message: 'This user dont have reservations' }, status: :unprocessable_entity
   end
 
   def create
@@ -20,10 +20,6 @@ class Api::V1::ReservationsController < ApplicationController
 
   def destroy
     reservation = Reservation.find(params[:id])
-    if reservation.nil?
-      return render json: { status: 'ERROR', message: 'Reservation does not exist' },
-                    status: :unprocessable_entity
-    end
 
     if reservation.destroy
       render json: { status: 'SUCCESS', message: 'Deleted reservation', data: reservation }, status: :ok
@@ -31,6 +27,9 @@ class Api::V1::ReservationsController < ApplicationController
       render json: { status: 'ERROR', message: 'Reservation not deleted', data: reservation.errors },
              status: :unprocessable_entity
     end
+  rescue ActiveRecord::RecordNotFound
+    render json: { status: 'ERROR', message: 'Reservation does not exist' },
+           status: :unprocessable_entity
   end
 
   private

@@ -1,4 +1,4 @@
-# # rubocop:disable all
+# rubocop:disable all
 # require 'swagger_helper'
 
 # RSpec.describe 'Api::V1::ReservationsController', type: :request do
@@ -9,14 +9,14 @@
 #     @user_id = @user.id
 #     @id = @reservation.id
 #   end
-  
+
 #   path "/Api/v1/user/{user_id}/reservation/{id}" do
 #     delete 'Deletes a reservation' do
 #       tags 'Reservations'
 #       produces 'application/json'
 #       parameter name: :user_id, in: :path, type: :integer
 #       parameter name: :id, in: :path, type: :integer
-      
+
 #       let (:user)  { User.create(username: 'Test User', full_name: 'Test User') }
 #       let (:car ) { Car.create(name: 'Test Car', cost_per_day: 100) }
 #       let (:reservation) { Reservation.create(starting_date: '2023-07-20T12:00:00Z', end_date: '2023-07-22T12:00:00Z', user: user, car: car) }
