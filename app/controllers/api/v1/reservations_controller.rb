@@ -19,17 +19,17 @@ class Api::V1::ReservationsController < ApplicationController
   end
 
   def destroy
-    reservation = Reservation.find(params[:id])
+    reservation = Reservation.find_by(id: params[:id], user_id: params[:user_id])
+
+    if reservation.nil?
+      return render json: { status: 'ERROR', message: 'Reservation does not exist' }, status: :unprocessable_entity
+    end
 
     if reservation.destroy
       render json: { status: 'SUCCESS', message: 'Deleted reservation', data: reservation }, status: :ok
     else
-      render json: { status: 'ERROR', message: 'Reservation not deleted', data: reservation.errors },
-             status: :unprocessable_entity
+      render json: { status: 'ERROR', message: 'Reservation not deleted', data: reservation.errors }, status: :unprocessable_entity
     end
-  rescue ActiveRecord::RecordNotFound
-    render json: { status: 'ERROR', message: 'Reservation does not exist' },
-           status: :unprocessable_entity
   end
 
   private
