@@ -28,7 +28,8 @@ class Api::V1::ReservationsController < ApplicationController
     if reservation.destroy
       render json: { status: 'SUCCESS', message: 'Deleted reservation', data: reservation }, status: :ok
     else
-      render json: { status: 'ERROR', message: 'Reservation not deleted', data: reservation.errors }, status: :unprocessable_entity
+      render json: { status: 'ERROR', message: 'Reservation not deleted', data: reservation.errors },
+             status: :unprocessable_entity
     end
   end
 
