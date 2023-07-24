@@ -4,7 +4,8 @@ class Api::V1::ReservationsController < ApplicationController
     if reservations.nil?
       render json: { status: 'ERROR', message: 'This user dont have reservations' }, status: :unprocessable_entity
     else
-      render json: { status: 'SUCCESS', message: 'Loaded all reservations', data: reservations }, status: :ok
+      data = reservations.as_json(include: :car)
+      render json: { status: 'SUCCESS', message: 'Loaded all reservations', data: data }, status: :ok
     end
   end
 
