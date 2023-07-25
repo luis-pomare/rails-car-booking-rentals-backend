@@ -28,11 +28,11 @@
 # 📖 [RoadTrip wheels API] <a name="about-project"></a>
 
 ### The Roadtrip wheels API is the backend of the Road trip wheels web application, where you can register, make a reservation on a car an check your reservations.
+Heres the frontend <a href="https://github.com/shayan1234554321/RoadTrip-Wheels" >Link</a>
 
 ## 🛠 Built With <a name="built-with"></a>
 
 - Ruby on rails
-
 
 ### Tech Stack <a name="tech-stack"></a>
 
@@ -64,8 +64,7 @@
 
 ## 🚀 Live Demo <a name="live-demo"></a>
 
-<a href="">Live demo</a>
-
+<a href="https://roadtrip-wheels.onrender.com/">Live demo</a>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -100,9 +99,8 @@ Clone this repository to your desired folder:
 Run the following codes in your project folder in your IDE:
 
 ```
-bundle 
+bundle install
 ```
-
 
 ### Usage
 
@@ -117,7 +115,6 @@ rails s
 ### Front end
 
 Go to [the front end repo](https://github.com/shayan1234554321/RoadTrip-Wheels) and follow the readme instructions.
-
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
