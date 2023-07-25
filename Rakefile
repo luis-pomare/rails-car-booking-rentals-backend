@@ -4,3 +4,10 @@
 require_relative "config/application"
 
 Rails.application.load_tasks
+
+namespace :assets do
+  task :precompile do
+    # Dummy task that does nothing
+    puts "Skipping assets precompile for API-only application."
+  end
+end
