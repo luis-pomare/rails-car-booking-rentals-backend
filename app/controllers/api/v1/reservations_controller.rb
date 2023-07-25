@@ -1,9 +1,12 @@
 class Api::V1::ReservationsController < ApplicationController
   def index
     reservations = Reservation.includes(:car).where(user: User.find(params[:user_id]))
-    render json: { status: 'SUCCESS', message: 'Loaded all reservations', data: reservations }, status: :ok
-  rescue ActiveRecord::RecordNotFound
-    render json: { status: 'ERROR', message: 'This user dont have reservations' }, status: :unprocessable_entity
+    if reservations.nil?
+      render json: { status: 'ERROR', message: 'This user dont have reservations' }, status: :unprocessable_entity
+    else
+      data = reservations.as_json(include: :car)
+      render json: { status: 'SUCCESS', message: 'Loaded all reservations', data: data }, status: :ok
+    end
   end
 
   def create
