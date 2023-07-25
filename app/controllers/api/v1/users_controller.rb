@@ -21,6 +21,7 @@ class Api::V1::UsersController < ApplicationController
 
   def destroy
     user = User.where(username: params[:username]).first
+    user&.reservations&.destroy_all
     return render json: { status: 'ERROR', message: 'User not found' }, status: :unprocessable_entity if user.nil?
 
     if user.destroy

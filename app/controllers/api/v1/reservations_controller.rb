@@ -5,7 +5,7 @@ class Api::V1::ReservationsController < ApplicationController
       render json: { status: 'ERROR', message: 'This user dont have reservations' }, status: :unprocessable_entity
     else
       data = reservations.as_json(include: :car)
-      render json: { status: 'SUCCESS', message: 'Loaded all reservations', data: data }, status: :ok
+      render json: { status: 'SUCCESS', message: 'Loaded all reservations', data: }, status: :ok
     end
   end
 
@@ -22,10 +22,10 @@ class Api::V1::ReservationsController < ApplicationController
   end
 
   def destroy
-    reservation = Reservation.find(params[:id])
+    reservation = Reservation.find_by(id: params[:id], user_id: params[:user_id])
+
     if reservation.nil?
-      return render json: { status: 'ERROR', message: 'Reservation does not exist' },
-                    status: :unprocessable_entity
+      return render json: { status: 'ERROR', message: 'Reservation does not exist' }, status: :unprocessable_entity
     end
 
     if reservation.destroy
