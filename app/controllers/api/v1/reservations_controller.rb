@@ -11,7 +11,7 @@ class Api::V1::ReservationsController < ApplicationController
 
   def create
     reservation = Reservation.new(reservation_params)
-    reservation.user = User.find_by(:username: params[:user_username])
+    reservation.user = User.find_by(:username params[:user_username])
     reservation.car = Car.find(params[:car_id])
     if reservation.save
       render json: { status: 'SUCCESS', message: 'Reservation saved', data: reservation }, status: :ok
