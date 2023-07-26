@@ -4,7 +4,7 @@ info:
   title: API V1
   version: v1
 paths:
-  "/Api/v1/cars":
+  "/api/v1/cars":
     post:
       summary: Creates a new car
       tags:
@@ -177,7 +177,7 @@ paths:
                 required:
                 - status
                 - message
-  "/Api/v1/cars/{id}":
+  "/api/v1/cars/{id}":
     delete:
       summary: Deletes a car by ID
       tags:
@@ -249,7 +249,7 @@ paths:
                 required:
                 - status
                 - message
-  "/Api/v1/car/{id}":
+  "/api/v1/car/{id}":
     get:
       summary: Retrieves a car by ID
       tags:
@@ -319,17 +319,17 @@ paths:
                 required:
                 - status
                 - message
-  "/Api/v1/users/{user_id}/reservations":
+  "/api/v1/users/{:user_username}/reservations":
     post:
       summary: Creates a new reservation
       tags:
       - Reservations
       parameters:
-      - name: user_id
+      - name: user_username
         in: path
         required: true
         schema:
-          type: integer
+          type: string
       - name: car_id
         in: query
         schema:
@@ -360,16 +360,17 @@ paths:
               required:
               - starting_date
               - end_date
+  "/Api/v1/users/{user_username}/reservations":
     get:
       summary: Retrieves all reservations for a user
       tags:
       - Reservations
       parameters:
-      - name: user_id
+      - name: user_username
         in: path
         required: true
         schema:
-          type: integer
+          type: string
       responses:
         '200':
           description: OK

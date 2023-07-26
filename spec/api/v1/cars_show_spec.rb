@@ -2,7 +2,7 @@
 require 'swagger_helper'
 
 RSpec.describe 'Api::V1::Cars', type: :request do
-  path '/Api/v1/car/{id}' do
+  path '/api/v1/car/{id}' do
     get 'Retrieves a car by ID' do
       tags 'Cars'
       produces 'application/json'

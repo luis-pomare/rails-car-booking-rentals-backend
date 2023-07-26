@@ -1,6 +1,6 @@
 class Api::V1::ReservationsController < ApplicationController
   def index
-    reservations = Reservation.includes(:car).where(user: User.find(params[:user_id]))
+    reservations = Reservation.includes(:car).where(user: User.find_by(username: params[:user_username]))
     unless reservations.nil?
       data = reservations.as_json(include: :car)
       render json: { status: 'SUCCESS', message: 'Loaded all reservations', data: }, status: :ok

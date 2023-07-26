@@ -2,7 +2,7 @@
 require 'swagger_helper'
 
 RSpec.describe 'Api::V1::Cars', type: :request do
-  path '/Api/v1/cars' do
+  path '/api/v1/cars' do
     post 'Creates a new car' do
       tags 'Cars'
       consumes 'application/json'

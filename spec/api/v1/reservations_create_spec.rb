@@ -2,12 +2,12 @@
 require 'swagger_helper'
 
 RSpec.describe 'Api::V1::ReservationsController', type: :request do
-  path '/Api/v1/users/{user_id}/reservations' do
+  path '/api/v1/users/{:user_username}/reservations' do
     post 'Creates a new reservation' do
       tags 'Reservations'
       consumes 'application/json'
       produces 'application/json'
-      parameter name: :user_id, in: :path, type: :integer
+      parameter name: :user_username, in: :path, type: :string
       parameter name: :car_id, in: :query, type: :integer
       parameter name: :reservation, in: :body, schema: {
         type: :object,
@@ -23,7 +23,7 @@ RSpec.describe 'Api::V1::ReservationsController', type: :request do
       }
 
       response '200', 'OK' do
-        let(:user_id) { User.create(username: 'Test User', full_name: 'test').id }
+        let(:user_username) { User.create(username: 'Test User', full_name: 'test').username }
         let(:car_id) { Car.create(name: 'Test Car', cost_per_day: 100).id }
         let(:reservation) { { starting_date: '2023-07-20T12:00:00Z', end_date: '2023-07-22T12:00:00Z' } }
 

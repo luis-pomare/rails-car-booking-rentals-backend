@@ -2,11 +2,11 @@
 require 'swagger_helper'
 
 RSpec.describe 'Api::V1::Reservations', type: :request do
-  path '/Api/v1/users/{user_id}/reservations' do
+  path '/Api/v1/users/{user_username}/reservations' do
     get 'Retrieves all reservations for a user' do
       tags 'Reservations'
       produces 'application/json'
-      parameter name: :user_id, in: :path, type: :integer
+      parameter name: :user_username, in: :path, type: :string
 
       response '200', 'OK' do
         schema type: :object,
@@ -39,7 +39,7 @@ RSpec.describe 'Api::V1::Reservations', type: :request do
         let!(:reservations1) { Reservation.create(user_id: user.id, car_id: car.id, starting_date: Date.today, end_date: Date.today + 1) }
         let!(:reservations2) { Reservation.create(user_id: user.id, car_id: car.id, starting_date: Date.today + 2, end_date: Date.today + 3) }
         let!(:reservations3) { Reservation.create(user_id: user.id, car_id: car.id, starting_date: Date.today + 4, end_date: Date.today + 5)}
-        let(:user_id) { user.id }
+        let(:user_username) { user.username }
 
         run_test! do
           expect(response).to have_http_status(:ok)
@@ -68,7 +68,7 @@ RSpec.describe 'Api::V1::Reservations', type: :request do
                },
                required: ['status', 'message']
 
-        let(:user_id) { 999 } # A non-existent user ID
+        let(:user_username) { 'nothing' } # A non-existent user ID
 
         run_test! do
           expect(response).to have_http_status(:unprocessable_entity)
