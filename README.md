@@ -28,6 +28,7 @@
 # 📖 [RoadTrip wheels API] <a name="about-project"></a>
 
 ### The Roadtrip wheels API is the backend of the Road trip wheels web application, where you can register, make a reservation on a car an check your reservations.
+
 Heres the frontend <a href="https://github.com/shayan1234554321/RoadTrip-Wheels" >Link</a>
 
 ## 🛠 Built With <a name="built-with"></a>
@@ -88,7 +89,7 @@ In order to run this project you need:
 
 Clone this repository to your desired folder:
 
-```git clone https://github.com/luis-pomare/rails-car-booking-rentals-backend.git```
+`git clone https://github.com/luis-pomare/rails-car-booking-rentals-backend.git`
 
 - [ ] Open the file in your code editor
 
@@ -104,7 +105,23 @@ bundle install
 
 ### Usage
 
-To run the project, execute the following command:
+To run the API locally, execute the following commands:
+
+Create the database and run the migrations
+
+```
+rails db:create
+
+rails db:migrate
+
+rails db:schema:load
+```
+
+Optionally you can seed the database with the cars and the user (objects) that are included in this repo
+
+```
+rails db:seed
+```
 
 Start the server
 
