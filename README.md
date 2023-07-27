@@ -1,6 +1,18 @@
 <a name="readme-top"></a>
 
-<!-- TABLE OF CONTENTS -->
+# 👨‍🏫 Kanban board
+
+### Link to our project
+
+## [link](https://github.com/users/luis-pomare/projects/4)
+
+### Initial state
+
+![image](https://github.com/luis-pomare/rails-car-booking-rentals-backend/assets/80157011/f8b2826d-3958-4682-8581-896670a7b725)
+
+### Final number of team members
+
+The moment we finish this project, we were three people working on it.
 
 # 📗 Table of Contents
 
@@ -198,3 +210,4 @@ The frontend original [design](https://www.behance.net/gallery/26425031/Vespa-Re
 This project is [MIT](./LICENSE) licensed.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
+
