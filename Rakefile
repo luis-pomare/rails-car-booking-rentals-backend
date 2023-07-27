@@ -4,3 +4,11 @@
 require_relative "config/application"
 
 Rails.application.load_tasks
+
+task 'assets:precompile' do
+  # Dummy task, no action required
+end
+
+task 'assets:clean' do
+  # Dummy task, no action required
+end
