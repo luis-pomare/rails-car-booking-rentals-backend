@@ -77,7 +77,7 @@ Heres the frontend <a href="https://github.com/luis-pomare/rails-car-booking-ren
 
 ## 🚀 Live Demo <a name="live-demo"></a>
 
-<a href="https://roadtrip-wheels.onrender.com/">Live demo</a>
+<a href="https://rails-car-booking-rentals-frontend.onrender.com/">Live demo</a>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
