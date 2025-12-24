@@ -41,7 +41,7 @@ The moment we finish this project, we were three people working on it.
 
 ### The Roadtrip wheels API is the backend of the Road trip wheels web application, where you can register, make a reservation on a car an check your reservations.
 
-Heres the frontend <a href="https://github.com/shayan1234554321/RoadTrip-Wheels" >Link</a>
+Heres the frontend <a href="https://github.com/luis-pomare/rails-car-booking-rentals-frontend" >Link</a>
 
 ## 🛠 Built With <a name="built-with"></a>
 
